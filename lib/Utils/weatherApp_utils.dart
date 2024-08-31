@@ -1,1 +1,13 @@
 const weatherAPIKey = 'b5398b545c29f1fcbab4a8badf25007b';
+const metric = 'metric';
+const imperial = 'imperial';
+const celsius = 'C';
+const fahrenheit = 'F';
+const kelvin = 'K';
+const degree = '\u00b0';
+const iconUrlPrefix = 'https://openweathermap.org/img/wn/';
+const iconUrlSuffix = '@2x.png';
+const day = 'assets/images/evening.png';
+const night = 'assets/images/night.png';
+const iconPrefixName  = 'https://openweathermap.org/img/wn/';
+const iconUrlSuffixx= '@2x.png';
