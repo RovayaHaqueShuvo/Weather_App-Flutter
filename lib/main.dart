@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:weather_app/Pages/weather_add_city.dart';
 import 'package:weather_app/Pages/weather_home.dart';
+import 'package:weather_app/Pages/weather_setting.dart';
 import 'package:weather_app/Pages/weather_splash_screen.dart';
 import 'package:weather_app/Provider/weather_provider.dart';
 
@@ -24,7 +26,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const WeatherSplashScreen(),
+      initialRoute: WeatherSplashScreen.routeName,
+      routes: {
+        WeatherSplashScreen.routeName:(context) => const WeatherSplashScreen(),
+        WeatherHome.routeName:(context) =>const WeatherHome(),
+        WeatherAddCity.routeName:(context) =>const WeatherAddCity(),
+        WeatherSetting.routeName:(context) => const WeatherSetting(),
+      },
     );
   }
 }

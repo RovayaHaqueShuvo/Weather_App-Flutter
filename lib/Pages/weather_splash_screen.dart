@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:weather_app/Pages/weather_home.dart';
 
 class WeatherSplashScreen extends StatefulWidget {
+  static const routeName = '/splashScree';
   const WeatherSplashScreen({super.key});
 
   @override
@@ -16,9 +17,7 @@ class _WeatherSplashScreenState extends State<WeatherSplashScreen>
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     Future.delayed(const Duration(seconds: 3),(){
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const WeatherHome(),)
-      );
+      Navigator.pushNamed(context, '/');
     });
   }
   // @override
@@ -41,41 +40,48 @@ class _WeatherSplashScreenState extends State<WeatherSplashScreen>
             end: Alignment.bottomCenter,
             colors: [Color(0xFF0D1121), Color(0xFF241D49), Color(0xFF9045AA)]),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset('assets/images/splash_screen_icon.png'),
-          const SizedBox(
-            height: 30.0,
-          ),
-          const Text(
-            "Welcome",
-            style: TextStyle(
-              color: Color(0xE7FFFFFF),
-              fontSize: 30,
-              fontFamily: 'Cursive',
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const Text(
-            "Weather",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 46,
-              fontFamily: 'serif',
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const Text(
-            "Forecast",
-            style: TextStyle(
-              color: Color(0xE7EEB912),
-              fontSize: 40,
-              fontFamily: 'Roboto',
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
+      child: Center(
+        child: Wrap(
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('assets/images/splash_screen_icon.png'),
+                const SizedBox(
+                  height: 30.0,
+                ),
+                const Text(
+                  "Welcome",
+                  style: TextStyle(
+                    color: Color(0xE7FFFFFF),
+                    fontSize: 30,
+                    fontFamily: 'Cursive',
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const Text(
+                  "Weather",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 46,
+                    fontFamily: 'serif',
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const Text(
+                  "Forecast",
+                  style: TextStyle(
+                    color: Color(0xE7EEB912),
+                    fontSize: 40,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+        
+            )
+          ],
+        ),
       ),
     ));
   }
