@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+
+import 'dart:ffi';
+
 import 'package:intl/intl.dart';
 import 'package:weather_app/Utils/weatherApp_utils.dart';
 
@@ -16,4 +18,11 @@ String getFormattedDateTime(num dt, {String pattern = 'MMM dd, hh:mm a'}) {
 String getLocalTime(DateTime localTime ){
  final formattedLocalTime = DateFormat('hh:mm:ss a').format(localTime);
   return formattedLocalTime;
+}
+
+
+String getDirection(int degrees) {
+  final quadrants = ["North", "Northeast", "East", "Southeast", "South", "Southwest", "West", "Northwest"];
+  final quadrantIndex = (degrees / 45).floor() % quadrants.length;
+  return quadrants[quadrantIndex];
 }

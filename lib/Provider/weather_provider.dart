@@ -64,6 +64,39 @@ class WeatherProvider extends ChangeNotifier {
 
 
 
+  String convertToDMS(double coordinate, String positiveDirection, String negativeDirection) {
+    // Determine the direction (N/S or E/W)
+    String direction = coordinate >= 0 ? positiveDirection : negativeDirection;
+
+    // Get the absolute value for processing
+    double absCoord = coordinate.abs();
+
+    // Get degrees, minutes, and seconds
+    int degrees = absCoord.floor(); // Integer part for degrees
+    double minutesDecimal = (absCoord - degrees) * 60;
+    int minutes = minutesDecimal.floor(); // Integer part for minutes
+    double seconds = (minutesDecimal - minutes) * 60; // Fractional part for seconds
+
+    // Format and return the result
+    return "$degrees° $minutes' ${seconds.toStringAsFixed(2)}\" $direction";
+  }
+  // getlatitute(){
+  //   double latitude = latitute;
+  // }
+  // void main() {
+  //
+  //   double longitude = -30.67890;
+  //
+  //   // Convert latitude and longitude
+  //   String latDMS = ;
+  //   String lonDMS = );
+  //
+  //   print("Latitude: $latDMS");  // Output: Latitude: 15° 14' 4.42" N
+  //   print("Longitude: $lonDMS"); // Output: Longitude: 30° 40' 44.04" W
+  // }
+
+
+
   Future<void> determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -98,10 +131,9 @@ class WeatherProvider extends ChangeNotifier {
      final locationList = await geo.locationFromAddress(City);
      if(locationList.isNotEmpty){
        final location = locationList.first;
-       latitute = location.latitude;
-       longitute = location.longitude;
+       latitute = convertToDMS(location.latitude, "N", "S") as double;
+       longitute =convertToDMS( location.longitude, "E", "W") as double;
        getWeatherData();
-
      }
    } catch(error){
      print(error);
@@ -109,4 +141,5 @@ class WeatherProvider extends ChangeNotifier {
   }
 
 }
+
 
